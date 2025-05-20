@@ -1,23 +1,36 @@
-name: Python Hello World
+name: My first Github Action test
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+  #  branches: [ main ]
+  #pull_request:
+  #  branches: [ main ]
 
 jobs:
-  build:
+  windows: 
+  #build:
+    runs-on: windows-latest
+       - run: date 
+  ubuntu:
+    runs-on: ubuntu:latest
+       - run: date
+  macos:
+    runs-on: macos-latest
+       - run: date
+  depends:
+    needs: [ubuntu,windows]
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      - run: date
+    
+    #steps:
+    #- name: Checkout repository
+    #  uses: actions/checkout@v3
 
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.11'
+    #- name: Set up Python
+    #  uses: actions/setup-python@v4
+    #  with:
+    #    python-version: '3.11'
 
-    - name: Run hello.py
-      run: python hello.py
+    #- name: Run hello.py
+    #  run: python hello.py
