@@ -10,12 +10,15 @@ jobs:
   windows: 
   #build:
     runs-on: windows-latest
-       - run: date 
+    steps:
+       - run: date
   ubuntu:
-    runs-on: ubuntu:latest
+    runs-on: ubuntu-latest
+    steps:
        - run: date
   macos:
     runs-on: macos-latest
+    steps:
        - run: date
   depends:
     needs: [ubuntu,windows]
